@@ -39,22 +39,22 @@ class Customer
 
       case element.movie.price_code
       when Movie::REGULAR
-        this.amount += 2
+        this_amount += 2
         this_amount += (element.days_rented - 2) * 1.5 if element.days_rented > 2
       when Movie::NEW_RELEASE
         this_amount += element.days_rented * 3
       when Movie::CHILDRENS
         this_amount += 1.5
-        this_amount += (element.days_rented -3) * 1.5 if element.days_rented > 3
+        this_amount += (element.days_rented - 3) * 1.5 if element.days_rented > 3
       end
 
       frequent_renter_points += 1
-      if element.movie.price_code == Movie.NEW_RELEASE &&
+      if element.movie.price_code == Movie::NEW_RELEASE &&
         element.days_rented > 1
         frequent_renter_points += 1
       end
 
-      result += "\t" + each.movie.title + "\t" + this_amount.to_s + "\n"
+      result += "\t" + element.movie.title + "\t" + this_amount.to_s + "\n"
       total_amount += this_amount
     end
 
