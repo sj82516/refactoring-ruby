@@ -51,11 +51,8 @@ class Customer
   end
 
   def statement
-    frequent_renter_points = 0
     result = "Rental Record for #{@name}\n"
     @rentals.each do |element|
-      frequent_renter_points += element.frequent_renter_points
-
       result += "\t" + element.movie.title + "\t" + element.charge.to_s + "\n"
     end
 
@@ -68,6 +65,10 @@ class Customer
 
   def total_charge
     @rentals.reduce(0) { |sum, rental| sum + rental.charge }
+  end
+
+  def frequent_renter_points
+    @rentals.reduce(0) { |sum, rental| sum + rental.frequent_renter_points }
   end
 
 end
