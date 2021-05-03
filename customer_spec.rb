@@ -3,9 +3,9 @@ require_relative './customer'
 
 describe Customer do
   let!(:customer) { Customer.new("john") }
-  let! (:regular_movie) { Movie.new("regular", Movie::REGULAR) }
-  let! (:new_release_movie) { Movie.new("new release", Movie::NEW_RELEASE) }
-  let! (:children_movie) { Movie.new("children", Movie::CHILDRENS) }
+  let! (:regular_movie) { Movie.new("regular", RegularPrice.new) }
+  let! (:new_release_movie) { Movie.new("new release", NewReleasePrice.new) }
+  let! (:children_movie) { Movie.new("children", ChildrenPrice.new) }
   it "rent regular movies" do
     rental = Rental.new(regular_movie, 4)
 
