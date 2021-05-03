@@ -6,8 +6,8 @@ class Movie
   attr_reader :title
   attr_writer :price
 
-  def initialize(title, price_code)
-    @title, @price = title, price_code
+  def initialize(title, price)
+    @title, @price = title, price
   end
 
   def charge(days_rented)
